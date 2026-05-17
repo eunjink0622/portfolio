@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김은진 포트폴리오 | 교육영상 전문 PD</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --blue: #1A6FC4;
+  --blue-dark: #0D4F9E;
+  --blue-light: #E8F1FC;
+  --accent: #1A6FC4;
+  --navy: #0D1B2A;
+  --white: #FFFFFF;
+  --bg: #F8FAFD;
+  --text: #1A1A2E;
+  --text-sub: #5A6A7E;
+  --border: #D6E4F5;
+}
+body { font-family:'Malgun Gothic','맑은 고딕',sans-serif; background:var(--white); color:var(--text); line-height:1.8; font-size:18px; }
+nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(255,255,255,0.97); border-bottom:2px solid var(--blue); padding:0 60px; display:flex; justify-content:space-between; align-items:center; height:62px; }
+.nav-logo { font-size:17px; font-weight:700; color:var(--blue); letter-spacing:.06em; }
+.nav-links { display:flex; gap:36px; list-style:none; }
+.nav-links a { font-size:16px; color:var(--text-sub); text-decoration:none; font-weight:500; transition:color .2s; }
+.nav-links a:hover { color:var(--blue); }
+.hero { min-height:100vh; display:flex; align-items:center; padding:100px 60px 60px; background:var(--navy); }
+.hero-tag { display:inline-block; font-size:13px; letter-spacing:.12em; color:#4FC3F7; border:1px solid rgba(79,195,247,.5); padding:6px 18px; border-radius:20px; margin-bottom:28px; text-transform:uppercase; }
+.hero h1 { font-size:50px; font-weight:700; line-height:1.2; margin-bottom:28px; color:#FFFFFF; }
+.hero h1 span { color:#4FC3F7; }
+.hero-desc { font-size:20px; color:#B0C4D8; line-height:1.85; margin-bottom:48px; max-width:580px; }
+.hero-stats { display:flex; gap:52px; margin-bottom:48px; padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,.15); }
+.stat-num { font-size:36px; font-weight:700; color:#4FC3F7; line-height:1; }
+.stat-label { font-size:14px; color:#8A9BB0; margin-top:6px; }
+.hero-contact { display:flex; gap:28px; flex-wrap:wrap; }
+.contact-item { font-size:15px; color:#8A9BB0; display:flex; align-items:center; gap:8px; }
+.dot { width:5px; height:5px; border-radius:50%; background:#4FC3F7; flex-shrink:0; }
+section { padding:96px 60px; }
+section.bg-light { background:var(--bg); }
+.section-header { display:flex; align-items:baseline; gap:16px; margin-bottom:28px; border-left:4px solid var(--blue); padding-left:18px; }
+.section-num { font-size:13px; letter-spacing:.12em; color:var(--blue); text-transform:uppercase; font-weight:600; }
+.section-title { font-size:32px; font-weight:700; color:var(--text); }
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+.skill-card { background:var(--white); border:1.5px solid var(--border); border-radius:12px; padding:24px; }
+.skill-card-title { font-size:13px; font-weight:700; color:var(--blue); letter-spacing:.1em; text-transform:uppercase; margin-bottom:14px; padding-bottom:12px; border-bottom:1.5px solid var(--border); }
+.skill-list { list-style:none; }
+.skill-list li { font-size:17px; color:var(--text-sub); padding:5px 0; display:flex; align-items:center; gap:10px; }
+.skill-list li::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--blue); flex-shrink:0; }
+.career-item { display:grid; grid-template-columns:220px 1fr; gap:48px; padding:28px 0; border-bottom:1.5px solid var(--border); }
+.career-item:last-child { border-bottom:none; }
+.career-period { font-size:14px; color:var(--text-sub); margin-bottom:10px; }
+.career-company { font-size:22px; font-weight:700; color:var(--text); margin-bottom:6px; }
+.career-role { font-size:14px; color:var(--blue); font-weight:600; }
+.career-right h4 { font-size:13px; font-weight:700; color:var(--blue); letter-spacing:.08em; text-transform:uppercase; margin-bottom:10px; margin-top:24px; }
+.career-right h4:first-child { margin-top:0; }
+.career-duties { list-style:none; }
+.career-duties li { font-size:16px; color:var(--text-sub); padding:5px 0 5px 16px; position:relative; line-height:1.7; }
+.career-duties li::before { content:'–'; position:absolute; left:0; color:var(--blue); font-weight:700; }
+.achievements { display:flex; flex-wrap:wrap; gap:12px; margin-top:14px; }
+.badge { background:var(--blue-light); border:1.5px solid var(--border); border-radius:10px; padding:12px 18px; font-size:15px; color:var(--text-sub); }
+.badge strong { display:block; font-size:17px; font-weight:700; color:var(--blue); margin-bottom:3px; }
+.portfolio-category { margin-bottom:80px; }
+.portfolio-category:last-child { margin-bottom:0; }
+.cat-label { font-size:12px; letter-spacing:.15em; color:var(--blue); text-transform:uppercase; margin-bottom:6px; font-weight:700; }
+.cat-title { font-size:26px; font-weight:700; color:var(--text); margin-bottom:8px; }
+.cat-desc { font-size:17px; color:var(--text-sub); margin-bottom:20px; line-height:1.7; }
+.contrib-note { font-size:15px; color:var(--blue-dark); margin-bottom:16px; padding:8px 16px; background:var(--blue-light); border-left:3px solid var(--blue); border-radius:0 6px 6px 0; display:inline-block; font-weight:600; }
+.sub-label { font-size:15px; color:var(--text); font-weight:700; margin-bottom:10px; margin-top:28px; }
+.sub-label:first-of-type { margin-top:0; }
+.video-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:10px; }
+.video-card { background:var(--white); border:1.5px solid var(--border); border-radius:10px; overflow:hidden; }
+.yt-thumb { position:relative; aspect-ratio:16/9; background:#e8f1fc; overflow:hidden; }
+.yt-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+.play-overlay { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(26,111,196,.15); text-decoration:none; transition:background .2s; }
+.video-card:hover .play-overlay { background:rgba(26,111,196,.05); }
+.play-btn { width:44px; height:44px; border-radius:50%; background:var(--blue); display:flex; align-items:center; justify-content:center; }
+.play-btn::after { content:''; width:0; height:0; border-top:8px solid transparent; border-bottom:8px solid transparent; border-left:14px solid white; margin-left:4px; }
+.video-info { padding:12px 14px; }
+.video-contrib { font-size:14px; color:var(--blue); font-weight:700; }
+.photo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+.photo-item { aspect-ratio:4/3; border-radius:8px; overflow:hidden; border:1.5px solid var(--border); cursor:pointer; position:relative; }
+.photo-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s; }
+.photo-item:hover img { transform:scale(1.06); }
+.photo-item::after { content:'🔍'; position:absolute; bottom:6px; right:8px; font-size:16px; opacity:0; transition:opacity .2s; }
+.photo-item:hover::after { opacity:1; }
+.channel-link { display:inline-flex; align-items:center; gap:8px; background:var(--blue); border-radius:8px; padding:10px 20px; font-size:14px; color:var(--white); text-decoration:none; margin-bottom:18px; font-weight:600; transition:background .2s; }
+.channel-link:hover { background:var(--blue-dark); }
+
+/* LIGHTBOX */
+.lb-overlay { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; }
+.lb-overlay.on { display:flex; }
+.lb-overlay img { max-width:90vw; max-height:90vh; object-fit:contain; border-radius:8px; box-shadow:0 8px 40px rgba(0,0,0,.5); }
+.lb-close { position:fixed; top:20px; right:28px; font-size:48px; color:#fff; cursor:pointer; line-height:1; z-index:10000; font-weight:200; }
+.lb-close:hover { color:#4FC3F7; }
+
+footer { background:var(--navy); padding:48px 60px; display:flex; justify-content:space-between; align-items:center; }
+.footer-name { font-size:20px; font-weight:700; color:var(--white); margin-bottom:8px; }
+.footer-contact { font-size:15px; color:#8A9BB0; }
+.footer-right { text-align:right; font-size:14px; color:#8A9BB0; line-height:1.7; }
+@media(max-width:768px){
+  nav{padding:0 20px;} .hero{padding:80px 20px 48px;} .hero h1{font-size:32px;} .hero-desc{font-size:17px;}
+  section{padding:60px 20px;} .career-item{grid-template-columns:1fr;gap:16px;}
+  .video-grid{grid-template-columns:1fr 1fr;} .photo-grid{grid-template-columns:repeat(2,1fr);}
+  footer{flex-direction:column;gap:20px;text-align:center;} .footer-right{text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">KIM EUNJIN</div>
+  <ul class="nav-links">
+    <li><a href="#about">소개</a></li>
+    <li><a href="#skills">스킬</a></li>
+    <li><a href="#career">경력</a></li>
+    <li><a href="#works">작업물</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="about">
+  <div>
+    <div class="hero-tag">교육영상 전문 PD · 10년</div>
+    <h1>이러닝부터 기업교육까지,<br><span>교육영상</span>을 만듭니다</h1>
+    <p class="hero-desc">10년간 교육 콘텐츠만 만들어왔습니다.<br>강의 촬영부터 스튜디오 운영, 라이브 스트리밍, 유튜브 채널 기획까지.<br>단순히 카메라를 드는 것을 넘어 "이 영상이 누구에게 왜 필요한가"를<br>이해하며 콘텐츠를 만드는 사람, 김은진입니다.</p>
+    <div class="hero-stats">
+      <div><div class="stat-num">10년</div><div class="stat-label">교육 영상 경력</div></div>
+      <div><div class="stat-num">3개사</div><div class="stat-label">이러닝·기업·입시 교육</div></div>
+      <div><div class="stat-num">20.7%</div><div class="stat-label">유튜브 상담 전환율</div></div>
+    </div>
+    <div class="hero-contact">
+      <div class="contact-item"><span class="dot"></span>010-9265-1622</div>
+      <div class="contact-item"><span class="dot"></span>kid8798@naver.com</div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="bg-light">
+  <div class="section-header"><span class="section-num">01</span><h2 class="section-title">보유 스킬</h2></div>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="skill-card-title">카메라 · 장비</div><ul class="skill-list"><li>Canon XF 305</li><li>Panasonic AG-CX350</li><li>Canon Mark 4 (DSLR)</li><li>다양한 렌즈 운용</li><li>조명 세팅 및 구축</li></ul></div>
+    <div class="skill-card"><div class="skill-card-title">촬영 포맷</div><ul class="skill-list"><li>전자칠판 강의 촬영</li><li>크로마키 촬영·합성</li><li>판서 강의 촬영</li><li>PPT 강의 촬영</li><li>멀티캠 운용</li></ul></div>
+    <div class="skill-card"><div class="skill-card-title">편집 · 소프트웨어</div><ul class="skill-list"><li>Adobe Premiere Pro</li><li>Adobe After Effects</li><li>Adobe Photoshop</li><li>Avid Media Composer</li><li>CapCut</li></ul></div>
+    <div class="skill-card"><div class="skill-card-title">라이브 스트리밍</div><ul class="skill-list"><li>vMix HD</li><li>OBS Studio</li><li>Blackmagic 스위처</li><li>오디오 믹서 운용</li><li>유튜브·네이버 라이브</li></ul></div>
+    <div class="skill-card"><div class="skill-card-title">기획 · 운영</div><ul class="skill-list"><li>유튜브 채널 기획</li><li>대본 작성·구성</li><li>성과 분석·리포트</li><li>스케줄 관리</li><li>팀원 교육·관리</li></ul></div>
+  </div>
+</section>
+
+<section id="career">
+  <div class="section-header"><span class="section-num">02</span><h2 class="section-title">경력</h2></div>
+  <div class="career-item">
+    <div><div class="career-period">2025.06 — 현재</div><div class="career-company">모든에듀케이션</div><div class="career-role">유튜브 콘텐츠 총괄</div></div>
+    <div>
+      <h4>담당 업무</h4>
+      <ul class="career-duties"><li>유튜브 채널 콘텐츠 기획·구성·대본 작성부터 촬영·편집까지 전 과정 담당</li><li>롱폼·쇼츠·릴스 등 멀티포맷 콘텐츠 제작</li><li>월별 채널 성과 분석 및 데이터 기반 콘텐츠 개선 방향 도출</li><li>편집 프로토 수립 및 팀원 2명 교육·관리</li></ul>
+      <h4>주요 성과</h4>
+      <div class="achievements">
+        <div class="badge"><strong>채널 리브랜딩</strong>비활성화되어 있던 공식 채널을 처음부터 기획·구축</div>
+        <div class="badge"><strong>신규 상담 유입</strong>유튜브 유입 기반 실제 상담 전환 발생</div>
+        <div class="badge"><strong>전환율 20.7%</strong>UTM 링크 기준 상담 전환율 달성</div>
+      </div>
+    </div>
+  </div>
+  <div class="career-item">
+    <div><div class="career-period">2024.02 — 2025.06</div><div class="career-company">넷마루</div><div class="career-role">영상 제작팀</div></div>
+    <div>
+      <h4>담당 업무</h4>
+      <ul class="career-duties"><li>이러닝 강의 촬영·편집·납품 전 과정 담당</li><li>다양한 산업군 클라이언트 요청사항 파악 및 일정 관리</li><li>DSLR·다양한 렌즈 운용 역량 강화</li><li>컷편집·음향편집·모션그래픽 적용 등 편집 전반</li></ul>
+      <h4>주요 고객사</h4>
+      <ul class="career-duties"><li>현대, 휴넷, 비상교육, 국가인권위원회, 광주정보문화진흥원, 양평원 등</li><li>납기 100% 준수</li></ul>
+    </div>
+  </div>
+  <div class="career-item">
+    <div><div class="career-period">2016.10 — 2023.09</div><div class="career-company">에듀윌</div><div class="career-role">영상개발실 파트장</div></div>
+    <div>
+      <h4>담당 업무</h4>
+      <ul class="career-duties"><li>전사 이러닝 강의 촬영·편집·업로드 총괄</li><li>전자칠판·크로마키·판서·PPT 등 다양한 강의 포맷 촬영</li><li>스튜디오 대관 및 외부 업체 강의 제작 수주 운영</li><li>유튜브·네이버 쇼핑 라이브 커머스 기획 및 송출 (vMix·OBS)</li><li>합격자 인터뷰·행사 스케치 등 기획 영상 촬영·편집</li><li>파트원 업무 분장·역량 관리 및 스터디 운영</li></ul>
+      <h4>주요 성과</h4>
+      <div class="achievements">
+        <div class="badge"><strong>14시 → 9시</strong>강의 오픈 시간 단축</div>
+        <div class="badge"><strong>클레임 30% 감소</strong>교육을 통한 휴먼 에러 감소</div>
+        <div class="badge"><strong>연 1억 매출</strong>외주 수주 기여 (2021~2023)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="works" class="bg-light">
+  <div class="section-header"><span class="section-num">03</span><h2 class="section-title">작업물</h2></div>
+
+  <div class="portfolio-category">
+    <div class="cat-label">01. Lecture Video</div>
+    <div class="cat-title">강의 영상 촬영 · 제작</div>
+    <p class="cat-desc">에듀윌·넷마루에서 제작한 이러닝 강의 영상. 전자칠판·크로마키·판서·PPT 등 다양한 포맷 대응 가능.</p>
+    <p class="sub-label">[ 에듀윌 ]</p>
+    <div class="contrib-note">촬영 + 편집 담당</div>
+    <div class="video-grid">
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/dqExQ1gCiR0/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=dqExQ1gCiR0" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/bZ6MuQI0Oow/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=bZ6MuQI0Oow" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/SDGrrWir2t0/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=SDGrrWir2t0" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/i4q_1ieCR38/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=i4q_1ieCR38" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/cjF2KidJ9No/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=cjF2KidJ9No" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/ZTIncsKYn2k/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=ZTIncsKYn2k" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/gTuNArijeXg/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=gTuNArijeXg" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">촬영 + 편집</div></div></div>
+    </div>
+    <p class="sub-label" style="margin-top:32px;">[ 넷마루 ]</p>
+    <div class="contrib-note">촬영 + 편집 담당 · 디자인 및 인트로는 디자인팀 제작, 모션그래픽 적용·컷편집·음향편집 담당</div>
+    <div class="video-grid">
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/rPt51orUjEg/mqdefault.jpg" alt=""><a href="https://youtu.be/rPt51orUjEg" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/r9uSKFFrHww/mqdefault.jpg" alt=""><a href="https://youtu.be/r9uSKFFrHww" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/MUlAuLnOImc/mqdefault.jpg" alt=""><a href="https://youtu.be/MUlAuLnOImc" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/iza3c92kNyU/mqdefault.jpg" alt=""><a href="https://youtu.be/iza3c92kNyU" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/1TqL1la3oiY/mqdefault.jpg" alt=""><a href="https://youtu.be/1TqL1la3oiY" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/Jp7LeGSqM-o/mqdefault.jpg" alt=""><a href="https://youtu.be/Jp7LeGSqM-o" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/k0OTxMCqWFQ/mqdefault.jpg" alt=""><a href="https://youtu.be/k0OTxMCqWFQ" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/fnh5z_oMRcU/mqdefault.jpg" alt=""><a href="https://youtu.be/fnh5z_oMRcU" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/YZFDFxCQI-8/mqdefault.jpg" alt=""><a href="https://youtu.be/YZFDFxCQI-8" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">촬영 + 편집</div></div></div>
+    </div>
+  </div>
+
+  <div class="portfolio-category">
+    <div class="cat-label">02. Live Streaming</div>
+    <div class="cat-title">라이브 스트리밍 운영</div>
+    <p class="cat-desc">vMix·OBS를 활용한 멀티캠 라이브 스트리밍. 유튜브·네이버 쇼핑 라이브 커머스 및 온라인 설명회 운영.<br>라이브는 일회성 특성상 현장 사진으로 대체합니다.</p>
+    <div class="photo-grid">
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/live_01.png" alt="라이브 현장 1"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/live_04.jpg" alt="라이브 현장 2"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/live_05.jpg" alt="라이브 현장 3"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/live_06.jpg" alt="라이브 현장 4"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/live_07.jpg" alt="라이브 현장 5"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/live_08.jpg" alt="라이브 현장 6"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/live_09.jpg" alt="라이브 현장 7"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/live_10.jpg" alt="라이브 현장 8"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/live_11.jpg" alt="라이브 현장 9"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/live_12.jpg" alt="라이브 현장 10"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/live_13.jpg" alt="라이브 현장 11"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/live_14.jpg" alt="라이브 현장 12"></div>
+    </div>
+  </div>
+
+  <div class="portfolio-category">
+    <div class="cat-label">03. Brand Video</div>
+    <div class="cat-title">브랜드 · 기획 영상</div>
+    <p class="cat-desc">모든에듀케이션 유튜브 채널 기획 영상. 기획·구성·대본·촬영·편집·디자인 전 과정 직접 담당.</p>
+    <a href="https://www.youtube.com/@%EC%98%A4%EB%A7%88%EB%AF%B8" target="_blank" class="channel-link">▶ 모든에듀케이션 유튜브 채널 바로가기</a>
+    <div class="contrib-note">기획 + 구성 + 촬영 + 편집 + 디자인 전 과정 담당</div>
+    <div class="video-grid">
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/PY50W7B-rQY/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=PY50W7B-rQY" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">전 과정 담당</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/f18uQwi0v4A/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=f18uQwi0v4A" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">전 과정 담당</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/eTDAG_avkXw/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=eTDAG_avkXw" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">전 과정 담당</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/vI0V_hrISPA/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=vI0V_hrISPA" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">전 과정 담당</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/NvqqHnia_G0/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=NvqqHnia_G0" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">전 과정 담당</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/TCEvJT5rVrw/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=TCEvJT5rVrw" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">전 과정 담당</div></div></div>
+    </div>
+  </div>
+
+  <div class="portfolio-category">
+    <div class="cat-label">04. Photography</div>
+    <div class="cat-title">사진 촬영</div>
+    <p class="cat-desc">에듀윌 재직 중 사내 굿즈·행사·사원증 촬영. 소품 핸들링.</p>
+    <div class="photo-grid">
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/photo_01.jpg" alt="사진 1"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/photo_02.jpg" alt="사진 2"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/photo_03.jpg" alt="사진 3"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/photo_04.jpg" alt="사진 4"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/photo_05.jpg" alt="사진 5"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/photo_06.jpg" alt="사진 6"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/photo_07.jpg" alt="사진 7"></div>
+      <div class="photo-item" onclick="lb(this)"><img src="portfolio_images_compressed/photo_08.jpg" alt="사진 8"></div>
+    </div>
+  </div>
+
+  <div class="portfolio-category">
+    <div class="cat-label">05. Personal Work</div>
+    <div class="cat-title">개인 작업물</div>
+    <p class="cat-desc">개인 유튜브 채널 운영을 위해 직접 기획·촬영·편집한 영상들입니다.</p>
+    <div class="video-grid">
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/ha0SrZrcJ9o/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=ha0SrZrcJ9o" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">기획 + 촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/5n07sX-At18/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=5n07sX-At18" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">기획 + 촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/TKb-G4pm4OI/mqdefault.jpg" alt=""><a href="https://youtu.be/TKb-G4pm4OI" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">기획 + 촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/tp-gXVcW9Z0/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=tp-gXVcW9Z0" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">기획 + 촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/GKVa1_GJ7hE/mqdefault.jpg" alt=""><a href="https://www.youtube.com/watch?v=GKVa1_GJ7hE" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">기획 + 촬영 + 편집</div></div></div>
+      <div class="video-card"><div class="yt-thumb"><img src="https://img.youtube.com/vi/P9s95P7m_20/mqdefault.jpg" alt=""><a href="https://youtu.be/P9s95P7m_20" target="_blank" class="play-overlay"><div class="play-btn"></div></a></div><div class="video-info"><div class="video-contrib">기획 + 촬영 + 편집</div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-name">김은진 Kim Eunjin</div>
+    <div class="footer-contact">010-9265-1622 · kid8798@naver.com</div>
+  </div>
+  <div class="footer-right">교육영상 전문 PD · 10년 경력<br>이러닝 · 기업교육 · 입시 콘텐츠</div>
+</footer>
+
+<div class="lb-overlay" id="lbo" onclick="if(event.target===this)cls()">
+  <span class="lb-close" onclick="cls()">×</span>
+  <img id="lbi" src="" alt="">
+</div>
+
+<script>
+function lb(el){
+  document.getElementById('lbi').src=el.querySelector('img').src;
+  document.getElementById('lbo').classList.add('on');
+}
+function cls(){
+  document.getElementById('lbo').classList.remove('on');
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')cls();});
+</script>
+</body>
+</html>
